@@ -102,8 +102,9 @@ filetype off                  " required
     let mapleader=','
 
     " Copy and paste to system clipboard
-    nnoremap <C-c> "*y
-    nnoremap <C-v> "+p
+    " nnoremap <C-c> "*y
+    " nnoremap <C-v> "+p
+    set clipboard=unnamed
 
     " more robust exiting commands
     command! Q q
@@ -165,10 +166,10 @@ filetype off                  " required
   set hlsearch!
 
   " spelling
-  setlocal spell spelllang=en
-  nmap ss :set spell!<CR>
-  set nospell
-  autocmd FileType gitcommit setlocal spell
+  " setlocal spell spelllang=en
+  " nmap ss :set spell!<CR>
+  " set nospell
+  " autocmd FileType gitcommit setlocal spell
 
   " set foldmarker
   " set foldmethod=marker
@@ -199,13 +200,13 @@ filetype off                  " required
 "}}}
 
 "folding settings
-set foldmethod=syntax   "fold based on indent
+" set foldmethod=syntax   "fold based on indent
 "set foldnestmax=10      "deepest fold is 10 levels
-set foldlevelstart=1
+" set foldlevelstart=1
 " set nofoldenable        "dont fold by default
-" set foldlevel=1         "this is just what i use
+set foldlevel=1         "this is just what i use
 
-let javaScript_fold=1         " JavaScript
+" let javaScript_fold=1         " JavaScript
 " Airline footer
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
@@ -243,12 +244,12 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 				" let Vundle manage Vundle, required
 				Plugin 'VundleVim/Vundle.vim'
-				Plugin 'mileszs/ack.vim'                                 " File searching
+        Plugin 'mileszs/ack.vim'                                 " File searching
 				Plugin 'nathanaelkane/vim-indent-guides'
-				Plugin 'scrooloose/nerdtree'
+        Plugin 'scrooloose/nerdtree'
   			Plugin 'tpope/vim-vinegar'                               " Easier file browser
 				Plugin 'ctrlpvim/ctrlp.vim'
-				Plugin 'airblade/vim-gitgutter'
+        Plugin 'airblade/vim-gitgutter'
 				Plugin 'marijnh/tern_for_vim'
 				Plugin 'tpope/vim-fugitive'
 				Plugin 'tpope/vim-repeat'
@@ -260,44 +261,51 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 				Plugin 'chriskempson/base16-vim'
 				Plugin 'vim-airline/vim-airline'
 				Plugin 'vim-airline/vim-airline-themes'
-				Plugin 'JamshedVesuna/vim-markdown-preview'
+        Plugin 'JamshedVesuna/vim-markdown-preview'
 				Plugin 'godlygeek/tabular'
-				Plugin 'plasticboy/vim-markdown'
+        Plugin 'plasticboy/vim-markdown'
 				Plugin 'rizzatti/dash.vim'
-  			Plugin 'ervandew/supertab'                               " Insert completions
-  			Plugin 'bronson/vim-trailing-whitespace'                 " Highlight trailing whitespaces
+        Plugin 'ervandew/supertab'                               " Insert completions
+        " Plugin 'bronson/vim-trailing-whitespace'                 " Highlight trailing whitespaces
 			  Plugin 'pbrisbin/vim-mkdir'                              " Automatically create non-existent directories
   			Plugin 'kopischke/vim-fetch'                             " Allow vim to handle line and column numbers
+        Plugin 'editorconfig/editorconfig-vim'                   " Editor config plugin
 
 				" autocomplete
 				Plugin 'Raimondi/delimitMate'                            " auto-completion of quotes, parens, brckets
 				Plugin 'tpope/vim-surround'                              " Easy way to add parentheses, brackets, quotes, etc.
-				Plugin 'tpope/vim-endwise'                               " wisely add end to ruby and vim scripts
-				Plugin 'Valloric/YouCompleteMe'                          " Code completion engine
+				" Plugin 'tpope/vim-endwise'                               " wisely add end to ruby and vim scripts
+        Plugin 'Valloric/YouCompleteMe'                          " Code completion engine
 				Plugin 'SirVer/ultisnips'                                " Ultimate snippets solution
 				Plugin 'alvan/vim-closetag'                              " Auto close xml/html tags
 
 				" display
-  			Plugin 'luochen1990/rainbow'                             " rainbow parentheses
-				Plugin 'scrooloose/syntastic'
+        Plugin 'luochen1990/rainbow'                             " rainbow parentheses
+        Plugin 'scrooloose/syntastic'
   			Plugin 'Valloric/MatchTagAlways'                         " highlight enclosing html/xml tags
 
 				" movement
 				Plugin 'matze/vim-move'                                  " Move lines and selections up and down
-				Plugin 'justinmk/vim-sneak'                              " Easier movement in vim
+        Plugin 'justinmk/vim-sneak'                              " Easier movement in vim
 
 				" JS
   			Plugin 'moll/vim-node'                                   " better node.js development
-				Plugin 'jelera/vim-javascript-syntax'
+        Plugin 'jelera/vim-javascript-syntax'
 				Plugin 'maksimr/vim-jsbeautify'
-				Plugin 'mxw/vim-jsx'                                     " React JSX syntax highlighting and indenting
-				Plugin 'othree/yajs.vim'                                 " Yet Another Javascript Syntax
-				Plugin 'othree/es.next.syntax.vim'                       " ES.Next syntax
+        Plugin 'mxw/vim-jsx'                                     " React JSX syntax highlighting and indenting
+        Plugin 'othree/yajs.vim'                                 " Yet Another Javascript Syntax
+        Plugin 'othree/es.next.syntax.vim'                       " ES.Next syntax
 				Plugin 'isRuslan/vim-es6'                                " Snippets for ES6
 				Plugin 'gavocanov/vim-js-indent'                         " JS indentation for VIM
-				Plugin 'othree/javascript-libraries-syntax.vim'          " JS Syntax for libraries
+        Plugin 'othree/javascript-libraries-syntax.vim'          " JS Syntax for libraries
 				Plugin 'burnettk/vim-angular'                            " angularjs with vim
-				" Plugin 'pangloss/vim-javascript'                       " No longer maintained
+        " Plugin 'pangloss/vim-javascript'                       " No longer maintained
+
+        "SML
+        Plugin 'chilicuil/vim-sml-coursera'                     "sml repl and indent files
+        
+        "Misc
+        Plugin 'vitalk/vim-simple-todo'
 
 				" All of your Plugins must be added before the following line
 				call vundle#end()            " required
@@ -306,7 +314,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 		nmap <leader>ne :NERDTree<cr>
 
 " CtrlP
-    let g:ctrlp_match_window = 'top'
+    " let g:ctrlp_match_window = 'top'
     " let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
     let g:ctrl_map = ''
     let g:ctrlp_custom_ignore = {
@@ -316,13 +324,13 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " Syntastic
     let g:syntastic_enable_highlighting = 1
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 2
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_quiet_messages = {'level': 'warnings'}
-    let g:syntastic_html_tidy_ignore_errors = [" proprietary attribute \"ng-"]
-    let g:syntastic_javascript_checkers = ['jshint', 'eslint']
+    " let g:syntastic_always_populate_loc_list = 1
+    " let g:syntastic_auto_loc_list = 2
+    " let g:syntastic_check_on_open = 1
+    " let g:syntastic_check_on_wq = 0
+    " let g:syntastic_quiet_messages = {'level': 'warnings'}
+    " let g:syntastic_html_tidy_ignore_errors = [" proprietary attribute \"ng-"]
+    let g:syntastic_javascript_checkers = ['eslint']
 
 " Fugitive
     nnoremap <Leader>gb :Gblame<CR>
@@ -343,6 +351,8 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
     if !exists("g:ycm_semantic_triggers")
       let g:ycm_semantic_triggers = {}
     endif
+  let g:ycm_server_keep_logfiles = 1
+  let g:ycm_server_log_level = 'debug'
 
 " Dash keybinding
 		:nmap <silent> <leader>d <Plug>DashSearch
