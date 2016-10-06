@@ -14,9 +14,11 @@
   " colorscheme base16-default-dark
 
   set t_Co=256
-  " syntax enable
+  syntax enable
+  " set background=light
   set background=dark
   colorscheme hybrid
+  " colorscheme pencil
   " colorscheme base16-tomorrow
   " colorscheme seti
   " colorscheme highwayman
@@ -27,7 +29,6 @@
   " colorscheme distinguished
   " colorscheme lanox
   " colorscheme ego
-  " set background=light
   " colorscheme PaperColor
   " let g:PaperColor_Light_Override = { 'background' : '#abcdef', 'cursorline' : '#dfdfff', 'matchparen' : '#d6d6d6' , 'comment' : '#8e908c' }
   " let g:PaperColor_Dark_Override = { 'background' : '#1c1c1c', 'cursorline' : '#abcdef', 'matchparen' : '#3a3a3a', 'comment' : '#5f875f' }
@@ -212,6 +213,7 @@ let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
+" let g:airline_theme='pencil'
 " let g:airline_theme='papercolor'
 
 "Markdown Preview
@@ -257,7 +259,8 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
   			Plugin 'jeetsukumaran/vim-buffergator'                   " Buffer management
 				Plugin 'wesQ3/vim-windowswap'
 				Plugin 'terryma/vim-multiple-cursors'
-				Plugin 'NLKNguyen/papercolor-theme'
+        " Plugin 'NLKNguyen/papercolor-theme'
+        Plugin 'flazz/vim-colorschemes'
 				Plugin 'chriskempson/base16-vim'
 				Plugin 'vim-airline/vim-airline'
 				Plugin 'vim-airline/vim-airline-themes'
@@ -283,6 +286,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
         Plugin 'luochen1990/rainbow'                             " rainbow parentheses
         Plugin 'scrooloose/syntastic'
   			Plugin 'Valloric/MatchTagAlways'                         " highlight enclosing html/xml tags
+        Plugin 'edkolev/tmuxline.vim'                            " set tmux line color to match vim air line
 
 				" movement
 				Plugin 'matze/vim-move'                                  " Move lines and selections up and down
@@ -452,4 +456,45 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
   endif
 
+"}}}
+
+""" Tmux-Vim 
+"{{{
+  "tmuxline-vim plugin
+  let g:tmuxline_preset = {
+        \ 'a': '#S',
+        \ 'win': '#I #W',
+        \ 'cwin': '#I #W',
+        \ 'x': '♫ #(node ~/scripts/tmux/spotify-get-current-track.js)',
+        \ 'y': '#(~/dotfiles/bin/tmux-battery-master/tmux-battery)',
+        \ 'z': '%R',
+        \ 'options': {
+        \'status-justify': 'left'}
+        \}
+  " let g:tmuxline_preset = 'minimal'
+
+  if exists('$TMUX')
+  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
+    let previous_winnr = winnr()
+    silent! execute "wincmd " . a:wincmd
+    if previous_winnr == winnr()
+      call system("tmux select-pane -" . a:tmuxdir)
+      redraw!
+    endif
+  endfunction
+
+  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
+  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
+  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
+
+  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
+  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
+  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
+  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
+  else
+    map <C-h> <C-w>h
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
+    map <C-l> <C-w>l
+  endif
 "}}}
