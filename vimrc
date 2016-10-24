@@ -18,6 +18,7 @@
   " set background=light
   set background=dark
   colorscheme hybrid
+  " colorscheme one
   " colorscheme pencil
   " colorscheme base16-tomorrow
   " colorscheme seti
@@ -141,7 +142,7 @@ filetype off                  " required
     map <Leader>bv :bprevious<CR>
 
     " toggle background color
-    map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark")<CR>
+    " map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark")<CR>
 
     " Toggle highlight
     nmap <Leader>hs :set hlsearch! hlsearch?<CR>
@@ -214,8 +215,10 @@ set foldlevel=1         "this is just what i use
 " Airline footer
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
+let g:one_allow_italics = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='bubblegum'
+" let g:airline_theme='bubblegum'
+let g:airline_theme='one'
 " let g:airline_theme='pencil'
 " let g:airline_theme='papercolor'
 
@@ -276,6 +279,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 			  Plugin 'pbrisbin/vim-mkdir'                              " Automatically create non-existent directories
   			Plugin 'kopischke/vim-fetch'                             " Allow vim to handle line and column numbers
         Plugin 'editorconfig/editorconfig-vim'                   " Editor config plugin
+        Plugin 'rakr/vim-one'
 
 				" autocomplete
 				Plugin 'Raimondi/delimitMate'                            " auto-completion of quotes, parens, brckets
@@ -402,7 +406,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
     let g:rainbow_active = 1
     let g:rainbow_conf = {
     \ 'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-    \ 'ctermfgs': ['darkblue', 'lightyellow', 'red', 'darkgreen', 'darkmagenta'],
+    \ 'ctermfgs': ['darkblue', 'gray', 'red', 'darkgreen', 'darkmagenta'],
     \ 'operators': '_,_',
     \ 'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
     \ 'separately': {
@@ -500,4 +504,21 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
     map <C-k> <C-w>k
     map <C-l> <C-w>l
   endif
+"}}}
+
+""" Toggle between light and dark
+"{{{
+  function! ToggleColors()
+    if (&background == "dark")
+      colorscheme one
+      :let &background = "light"
+      :let airline_theme="one"
+    else 
+      colorscheme hybrid
+      :let &background = "dark"
+      :let airline_theme="bubblegum"
+    endif
+  endfunction
+
+  nnoremap <Leader>bg :call ToggleColors()<CR>
 "}}}
