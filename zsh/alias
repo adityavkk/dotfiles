@@ -1,0 +1,27 @@
+# ALIAS
+
+alias l = 'ls -la'
+alias vim='/usr/local/Cellar/vim/8.0.0046/bin/vim'
+alias v='/usr/local/Cellar/vim/8.0.0046/bin/vim'
+alias fullstack="cd ~/dev/Fullstack"
+alias codewars="cd ~/dev/CodeWars"
+alias c="clear"
+alias e="exit"
+alias ip="ifconfig | grep inet"
+alias pwdc="pwd|pbcopy"
+alias d="cd ~/dotfiles"
+alias ctags="ctags -R --exclude=.git --exclude=log ."
+alias src="source ~/.zshrc"
+alias gs='git status -sb'
+alias gco='git checkout'
+alias gcb='gco -b'
+alias ga='git add -A'
+alias gcm='git commit -m'
+alias glog='git log --oneline'
+alias gpl='git pull'
+alias gpu='git push origin'
+
+take () {
+  mkdir $1
+  cd $1
+}

@@ -30,8 +30,11 @@
   " colorscheme lanox
   " colorscheme ego
   " colorscheme PaperColor
-  " let g:PaperColor_Light_Override = { 'background' : '#abcdef', 'cursorline' : '#dfdfff', 'matchparen' : '#d6d6d6' , 'comment' : '#8e908c' }
-  " let g:PaperColor_Dark_Override = { 'background' : '#1c1c1c', 'cursorline' : '#abcdef', 'matchparen' : '#3a3a3a', 'comment' : '#5f875f' }
+  " colorscheme github
+  " colorscheme solarized
+  " colorscheme material
+  let g:PaperColor_Light_Override = { 'background' : '#abcdef', 'cursorline' : '#dfdfff', 'matchparen' : '#d6d6d6' , 'comment' : '#8e908c' }
+  let g:PaperColor_Dark_Override = { 'background' : '#1c1c1c', 'cursorline' : '#abcdef', 'matchparen' : '#3a3a3a', 'comment' : '#5f875f' }
 
   " imap <C-c> <CR><Esc>O
 
@@ -103,8 +106,8 @@ filetype off                  " required
     let mapleader=','
 
     " Copy and paste to system clipboard
-    " nnoremap <C-c> "*y
-    " nnoremap <C-v> "+p
+    " nnoremap <D-c> "*y
+    " nnoremap <D-v> "+p
     set clipboard=unnamed
 
     " more robust exiting commands
