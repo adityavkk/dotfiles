@@ -1,17 +1,39 @@
 # ALIAS
 
-alias l = 'ls -la'
+alias aliases='vim ~/dotfiles/zsh/alias'
+
+alias l='ls -la'
 alias vim='/usr/local/Cellar/vim/8.0.0046/bin/vim'
 alias v='/usr/local/Cellar/vim/8.0.0046/bin/vim'
 alias fullstack="cd ~/dev/Fullstack"
 alias codewars="cd ~/dev/CodeWars"
+alias euler="cd ~/dev/Problems/Project-Euler"
 alias c="clear"
 alias e="exit"
 alias ip="ifconfig | grep inet"
-alias pwdc="pwd|pbcopy"
+alias cwd="pwd|pbcopy"
 alias d="cd ~/dotfiles"
 alias ctags="ctags -R --exclude=.git --exclude=log ."
 alias src="source ~/.zshrc"
+
+# JS
+js () {
+  nodemon $1 -q -x 'clear && node'
+}
+
+# Scheme
+alias scheme="/Applications/MIT:GNU\ Scheme.app/Contents/Resources/mit-scheme"
+scm () {
+  scheme --load $1
+}
+
+# Racket
+alias racket="/Applications/Racket\ v6.7/bin/racket"
+rkt () {
+  racket -f $1 -i
+}
+
+# Git
 alias gs='git status -sb'
 alias gco='git checkout'
 alias gcb='gco -b'
@@ -20,6 +42,9 @@ alias gcm='git commit -m'
 alias glog='git log --oneline'
 alias gpl='git pull'
 alias gpu='git push origin'
+
+# Python
+alias py='python3'
 
 take () {
   mkdir $1

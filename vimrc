@@ -46,6 +46,13 @@
 
   " make it obvious where 80 char is
   " set colorcolumn=80
+  hi LineProximity ctermfg=white ctermbg=gray guifg=white guibg=#A3A3A3
+  hi LineOverflow  ctermfg=white ctermbg=red guifg=white guibg=#FF2270
+
+  autocmd BufEnter,VimEnter,FileType *.* let w:m1=matchadd('LineProximity', '\%<85v.\%>80v', -1)
+  autocmd BufEnter,VimEnter,FileType *.* let w:m2=matchadd('LineOverflow', '\%>84v.\+', -1)
+  autocmd BufEnter,VimEnter,FileType,VimEnter *.* autocmd WinEnter *.rb,*.coffee let w:created=1
+  autocmd BufEnter,VimEnter,FileType,VimEnter *.* let w:created=1
 
   " status line
   set laststatus=2                        " display status line
@@ -110,6 +117,9 @@ filetype off                  " required
     " nnoremap <D-c> "*y
     " nnoremap <D-v> "+p
     set clipboard=unnamed
+
+  " Fast editing of vimrc
+    map <leader>e :e! ~/dotfiles/vimrc<cr>
 
     " more robust exiting commands
     command! Q q
@@ -181,7 +191,7 @@ filetype off                  " required
 
   " Wild Settings
   " Disable output and VCS files
-  set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem,*.so
+  set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem,*.so,.cabal-sandbox
 
   " Disable archive files
   set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
@@ -280,6 +290,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
   			Plugin 'kopischke/vim-fetch'                             " Allow vim to handle line and column numbers
         Plugin 'editorconfig/editorconfig-vim'                   " Editor config plugin
         Plugin 'rakr/vim-one'
+        Plugin 'reedes/vim-pencil'                               " softwarping for writing
 
 				" autocomplete
 				Plugin 'Raimondi/delimitMate'                            " auto-completion of quotes, parens, brckets
@@ -314,7 +325,12 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
         "SML
         Plugin 'chilicuil/vim-sml-coursera'                     "sml repl and indent files
-        
+
+        "HS
+        Plugin 'eagletmt/ghcmod-vim'
+        Plugin 'eagletmt/neco-ghc'                              "Completion Plugin
+        Plugin 'Shougo/vimproc.vim'
+
         "Misc
         Plugin 'vitalk/vim-simple-todo'
 
@@ -334,14 +350,19 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
     \ }
 
 " Syntastic
+    " map <Leader>s :SyntasticToggleMode<CR>
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
     let g:syntastic_enable_highlighting = 1
-    " let g:syntastic_always_populate_loc_list = 1
-    " let g:syntastic_auto_loc_list = 2
-    " let g:syntastic_check_on_open = 1
-    " let g:syntastic_check_on_wq = 0
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 0
+    let g:syntastic_check_on_open = 0
+    let g:syntastic_check_on_wq = 0
     " let g:syntastic_quiet_messages = {'level': 'warnings'}
     " let g:syntastic_html_tidy_ignore_errors = [" proprietary attribute \"ng-"]
     let g:syntastic_javascript_checkers = ['eslint']
+    let g:syntastic_haskell_checkers = ['hlint']
 
 " Fugitive
     nnoremap <Leader>gb :Gblame<CR>
@@ -438,6 +459,35 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
     let g:javascript_enable_domhtmlcss = 1
     let g:javascript_plugin_flow = 1
 
+" vim-pencil
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text         call pencil#init()
+augroup END
+
+"tabular
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
+let g:haskell_tabular = 1
+vmap a= :Tabularize /=<CR>
+vmap a; :Tabularize /::<CR>
+vmap a- :Tabularize /-><CR>
+
+"GHC-MOD
+map <silent> tw :GhcModTypeInsert<CR>
+map <silent> ts :GhcModSplitFunCase<CR>
+map <silent> tq :GhcModType<CR>
+map <silent> te :GhcModTypeClear<CR>
+" autocmd FileType haskell
+       " if !executable('ghc-mod')
+         " let b:did_ftplugin_ghcmod = 1
+       " endif
 
 """ File Types
 "{{{
@@ -455,7 +505,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
     endif
 
     " make Python follow PEP8 for whitespace ( http://www.python.org/dev/peps/pep-0008/ )
-    au FileType python setlocal tabstop=4 shiftwidth=4>
+    au FileType python setlocal tabstop=4 shiftwidth=4
 
     "Remember last location in file, but not for commit message.
     au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
@@ -521,4 +571,9 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
   endfunction
 
   nnoremap <Leader>bg :call ToggleColors()<CR>
+"}}}
+
+""" $PATH
+"{{{
+  let $PATH = $PATH . ':' .expand('~/.local/bin')
 "}}}
