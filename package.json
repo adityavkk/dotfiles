@@ -1,0 +1,11 @@
+{
+  "name": "dotfiles",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/adityavkk/dotfiles.git",
+    "type": "git"
+  },
+  "author": "Aditya K <adityavkk@gmail.com>",
+  "license": "MIT"
+}
