@@ -333,6 +333,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
         "Misc
         Plugin 'vitalk/vim-simple-todo'
+        Plugin 'floobits/floobits-neovim'
 
 				" All of your Plugins must be added before the following line
 				call vundle#end()            " required
