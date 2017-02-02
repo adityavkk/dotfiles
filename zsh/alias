@@ -6,7 +6,8 @@ alias l='ls -la'
 alias vim='/usr/local/Cellar/vim/8.0.0046/bin/vim'
 alias v='/usr/local/Cellar/vim/8.0.0046/bin/vim'
 alias fullstack="cd ~/dev/Fullstack"
-alias codewars="cd ~/dev/CodeWars"
+alias sandbox="cd ~/dev/Sandbox"
+alias scrap="cd ~/dev/scrap"
 alias euler="cd ~/dev/Problems/Project-Euler"
 alias c="clear"
 alias e="exit"
@@ -16,9 +17,19 @@ alias d="cd ~/dotfiles"
 alias ctags="ctags -R --exclude=.git --exclude=log ."
 alias src="source ~/.zshrc"
 
+# NeoVim
+nv () {
+  nvim $1
+}
+
 # JS
 js () {
   nodemon $1 -q -x 'clear && node'
+}
+
+# HS
+hs () {
+  ghci $1
 }
 
 # Scheme

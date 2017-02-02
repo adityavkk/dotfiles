@@ -291,6 +291,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
         Plugin 'editorconfig/editorconfig-vim'                   " Editor config plugin
         Plugin 'rakr/vim-one'
         Plugin 'reedes/vim-pencil'                               " softwarping for writing
+        Plugin 'kana/vim-textobj-user'                           " create custom txt obj
 
 				" autocomplete
 				Plugin 'Raimondi/delimitMate'                            " auto-completion of quotes, parens, brckets
@@ -330,6 +331,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
         Plugin 'eagletmt/ghcmod-vim'
         Plugin 'eagletmt/neco-ghc'                              "Completion Plugin
         Plugin 'Shougo/vimproc.vim'
+        Plugin 'isovector/ghci.vim'                             "Tight integration between vim and ghci
 
         "Misc
         Plugin 'vitalk/vim-simple-todo'
