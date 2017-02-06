@@ -29,6 +29,9 @@ export PATH="$PATH:/usr/local/smlnj/bin"
 source $ZSH/oh-my-zsh.sh
 source ~/dotfiles/zsh/alias
 
+# Vim Keybindings
+bindkey -v
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
