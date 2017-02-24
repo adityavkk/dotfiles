@@ -46,11 +46,11 @@
 
   " make it obvious where 80 char is
   " set colorcolumn=80
-  hi LineProximity ctermfg=white ctermbg=gray guifg=white guibg=#A3A3A3
-  hi LineOverflow  ctermfg=white ctermbg=red guifg=white guibg=#FF2270
+  " hi LineProximity ctermfg=white ctermbg=gray guifg=white guibg=#A3A3A3
+  " hi LineOverflow  ctermfg=white ctermbg=red guifg=white guibg=#FF2270
 
-  autocmd BufEnter,VimEnter,FileType *.* let w:m1=matchadd('LineProximity', '\%<85v.\%>80v', -1)
-  autocmd BufEnter,VimEnter,FileType *.* let w:m2=matchadd('LineOverflow', '\%>84v.\+', -1)
+  " autocmd BufEnter,VimEnter,FileType *.* let w:m1=matchadd('LineProximity', '\%<85v.\%>80v', -1)
+  " autocmd BufEnter,VimEnter,FileType *.* let w:m2=matchadd('LineOverflow', '\%>84v.\+', -1)
   autocmd BufEnter,VimEnter,FileType,VimEnter *.* autocmd WinEnter *.rb,*.coffee let w:created=1
   autocmd BufEnter,VimEnter,FileType,VimEnter *.* let w:created=1
 
@@ -112,6 +112,9 @@ filetype off                  " required
 
     " map leader key
     let mapleader=','
+
+    " map local leader
+    let maplocalleader='['
 
     " Copy and paste to system clipboard
     " nnoremap <D-c> "*y
@@ -333,9 +336,15 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
         Plugin 'Shougo/vimproc.vim'
         Plugin 'isovector/ghci.vim'                             "Tight integration between vim and ghci
 
+        "Coq
+        Plugin 'let-def/vimbufsync'
+        Plugin 'the-lambda-church/coquille'
+        Plugin 'eagletmt/coqtop-vim'
+
         "Misc
         Plugin 'vitalk/vim-simple-todo'
         Plugin 'floobits/floobits-neovim'
+        Plugin 'vim-scripts/SyntaxRange'
 
 				" All of your Plugins must be added before the following line
 				call vundle#end()            " required
@@ -465,7 +474,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 " vim-pencil
 augroup pencil
   autocmd!
-  autocmd FileType markdown,mkd call pencil#init()
+  " autocmd FileType markdown,mkd call pencil#init()
   autocmd FileType text         call pencil#init()
 augroup END
 
@@ -575,6 +584,9 @@ map <silent> te :GhcModTypeClear<CR>
 
   nnoremap <Leader>bg :call ToggleColors()<CR>
 "}}}
+
+""" Coq Bindings
+nnoremap <LocalLeader>s = :CoqStart<CR>
 
 """ $PATH
 "{{{

@@ -16,6 +16,7 @@ alias cwd="pwd|pbcopy"
 alias d="cd ~/dotfiles"
 alias ctags="ctags -R --exclude=.git --exclude=log ."
 alias src="source ~/.zshrc"
+alias dev="cd ~/dev"
 
 # NeoVim
 nv () {
