@@ -44,13 +44,14 @@
   set number relativenumber
   set numberwidth=5
 
-  " make it obvious where 80 char is
-  " set colorcolumn=80
-  " hi LineProximity ctermfg=white ctermbg=gray guifg=white guibg=#A3A3A3
-  " hi LineOverflow  ctermfg=white ctermbg=red guifg=white guibg=#FF2270
+  make it obvious where 80 char is
+  set colorcolumn=80
+  hi LineProximity ctermfg=white ctermbg=gray guifg=white guibg=#A3A3A3
+  hi LineOverflow  ctermfg=white ctermbg=red guifg=white guibg=#FF2270
 
-  " autocmd BufEnter,VimEnter,FileType *.* let w:m1=matchadd('LineProximity', '\%<85v.\%>80v', -1)
-  " autocmd BufEnter,VimEnter,FileType *.* let w:m2=matchadd('LineOverflow', '\%>84v.\+', -1)
+  autocmd BufEnter,VimEnter,FileType *.* let w:m1=matchadd('LineProximity', '\%<85v.\%>80v', -1)
+  autocmd BufEnter,VimEnter,FileType *.* let w:m2=matchadd('LineOverflow', '\%>84v.\+', -1)
+
   autocmd BufEnter,VimEnter,FileType,VimEnter *.* autocmd WinEnter *.rb,*.coffee let w:created=1
   autocmd BufEnter,VimEnter,FileType,VimEnter *.* let w:created=1
 
@@ -384,6 +385,14 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
     nnoremap <Leader>gc :Gcommit<CR>
     nnoremap <Leader>gcm :Gcommit -m<CR>
     nnoremap <Leader>gp :Git push<CR>
+
+" Coquille
+  nnoremap <Leader>qn :CoqNext<CR>
+  nnoremap <Leader>ql :CoqLaunch<CR>
+  nnoremap <Leader>qk :CoqKill<CR>
+  nnoremap <Leader>qc :CoqToCursor<CR>
+  nnoremap <Leader>qu :CoqUndo<CR>
+  
 
 " vim-move
     let g:move_key_modifier = 'C'
