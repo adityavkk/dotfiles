@@ -44,7 +44,7 @@
   set number relativenumber
   set numberwidth=5
 
-  make it obvious where 80 char is
+  " make it obvious where 80 char is
   set colorcolumn=80
   hi LineProximity ctermfg=white ctermbg=gray guifg=white guibg=#A3A3A3
   hi LineOverflow  ctermfg=white ctermbg=red guifg=white guibg=#FF2270
