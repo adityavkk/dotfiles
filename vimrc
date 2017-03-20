@@ -136,6 +136,10 @@ filetype off                  " required
     map <C-s> <esc>:w<CR>
     imap <C-s> <esc>:w<CR>
 
+    " easier save and quit
+    map <Leader>s <esc>:w<CR>
+    map <Leader>q <esc>:q!<CR>
+
     " quicker splitting
     map <Leader>sp :split<CR>
     map <Leader>vp :vsplit<CR>
