@@ -307,6 +307,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 				" Plugin 'tpope/vim-endwise'                               " wisely add end to ruby and vim scripts
         Plugin 'Valloric/YouCompleteMe'                          " Code completion engine
 				Plugin 'SirVer/ultisnips'                                " Ultimate snippets solution
+        Plugin 'honza/vim-snippets'                              " Helpful snipptes for utili-snips
 				Plugin 'alvan/vim-closetag'                              " Auto close xml/html tags
 
 				" display
@@ -402,14 +403,25 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
     let g:move_key_modifier = 'C'
 
 " YouCompleteMe
-    set completeopt-=preview
-    let g:ycm_register_as_syntastic_checker = 0
-    let g:ycm_add_preview_to_completeopt = 0
-    if !exists("g:ycm_semantic_triggers")
-      let g:ycm_semantic_triggers = {}
-    endif
+  set completeopt-=preview
+  let g:ycm_register_as_syntastic_checker = 0
+  let g:ycm_add_preview_to_completeopt = 0
+  if !exists("g:ycm_semantic_triggers")
+    let g:ycm_semantic_triggers = {}
+  endif
+
   let g:ycm_server_keep_logfiles = 1
   let g:ycm_server_log_level = 'debug'
+  "
+ " YCM compatible with UltiSnips (using SuperTab)
+    let g:ycm_key_list_select_completion = ['<C-n>', '<Down>', '<Tab>']
+    let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+    let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" UtiliSnips
+    let g:UltiSnipsExpandTrigger='<Leader>e'
+    let g:UltiSnipsJumpForwardTrigger='<Leader>f'
+    let g:UltiSnipsJumpBackwardTrigger='<Leader>b'
 
 " Dash keybinding
 		:nmap <silent> <leader>d <Plug>DashSearch
