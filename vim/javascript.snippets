@@ -1,0 +1,13 @@
+# Ramda
+snippet ram
+	const R = require('ramda')
+# Lodash
+snippet lo
+	const _ = require('lodash')
+# Global Namespace Library (dependancy - lodash)
+snippet glib
+	const { assignIn } = require('lodash')
+	assignIn(global, require('${1}'))
+# Alias console.log with log
+snippet clog
+	const log = console.log
