@@ -44,6 +44,9 @@
   set number relativenumber
   set numberwidth=5
 
+  " automatically remove trailing whitespaces
+  autocmd BufWritePre * %s/\s\+$//e
+
   " make it obvious where 80 char is
   set colorcolumn=80
   hi LineProximity ctermfg=white ctermbg=gray guifg=white guibg=#A3A3A3
