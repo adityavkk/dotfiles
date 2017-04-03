@@ -345,6 +345,9 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
         Plugin 'Shougo/vimproc.vim'
         Plugin 'isovector/ghci.vim'                             "Tight integration between vim and ghci
 
+        "PureScript
+        Plugin 'raichoo/purescript-vim'                         "PureScript Highlighting
+
         "Coq
         Plugin 'let-def/vimbufsync'
         Plugin 'the-lambda-church/coquille'
@@ -400,7 +403,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
   nnoremap <Leader>qk :CoqKill<CR>
   nnoremap <Leader>qc :CoqToCursor<CR>
   nnoremap <Leader>qu :CoqUndo<CR>
-  
+
 
 " vim-move
     let g:move_key_modifier = 'C'
@@ -555,7 +558,7 @@ map <silent> te :GhcModTypeClear<CR>
 
 "}}}
 
-""" Tmux-Vim 
+""" Tmux-Vim
 "{{{
   "tmuxline-vim plugin
   let g:tmuxline_preset = {
@@ -603,7 +606,7 @@ map <silent> te :GhcModTypeClear<CR>
       colorscheme one
       :let &background = "light"
       :let airline_theme="one"
-    else 
+    else
       colorscheme hybrid
       :let &background = "dark"
       :let airline_theme="bubblegum"
