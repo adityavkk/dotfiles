@@ -1,5 +1,10 @@
 
 snippet memo
+	{-# LANGUAGE FlexibleContexts #-}
+	import qualified Data.HashMap.Lazy as H
+	import           Data.Hashable
+	import           Control.Monad.State
+
 	evaluateFunction :: (Ord a, Hashable a) =>
 		(a -> Either b ([a], [b] -> b))
 		-> a -> b
