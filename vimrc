@@ -581,6 +581,7 @@ map <silent> te :GhcModTypeClear<CR>
       call system("tmux select-pane -" . a:tmuxdir)
       redraw!
     endif
+    <C-w>wincmd
   endfunction
 
   let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
