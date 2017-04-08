@@ -59,6 +59,7 @@ alias gpu='git push origin'
 
 # Python
 alias py='python3'
+alias pyi='python3 -i'
 
 take () {
   mkdir $1
