@@ -512,6 +512,10 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
     let g:javascript_conceal_prototype            = "¶"
     let g:javascript_conceal_static               = "•"
     map <leader>c :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
+" vim-flow
+    let g:flow#enable = 0
+    let g:flow#autoclose = 1
+    map <leader>fl :FlowToggle<CR>
 
 " vim-pencil
 augroup pencil
