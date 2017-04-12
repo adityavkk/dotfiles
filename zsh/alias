@@ -28,6 +28,14 @@ js () {
   nodemon $1 -q -x 'clear && node'
 }
 
+flo () {
+  tmux split-window -h && nodemon $1 -x 'flow-remove-types $1 -o .flow-removed'
+}
+
+jsf () {
+  nodemon .flow-removed -q -x 'clear && node'
+}
+
 # HS
 hs () {
   ghci $1
