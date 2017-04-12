@@ -434,7 +434,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 		:nmap <silent> <leader>d <Plug>DashSearch
 
 " vim-closetag
-    let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php,*.js,*.jsx"
+    let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php,*.jsx"
     au FileType xml,html,phtml,php,xhtml,js,jsx let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " vim-sneak

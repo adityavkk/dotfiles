@@ -29,7 +29,7 @@ js () {
 }
 
 flo () {
-  tmux split-window -h && nodemon $1 -x 'flow-remove-types $1 -o .flow-removed'
+  tmux split-window -v && nodemon $1 -x 'flow-remove-types $1 -o .flow-removed'
 }
 
 jsf () {
