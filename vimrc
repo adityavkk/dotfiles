@@ -328,13 +328,14 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
         Plugin 'jelera/vim-javascript-syntax'
 				Plugin 'maksimr/vim-jsbeautify'
         Plugin 'mxw/vim-jsx'                                     " React JSX syntax highlighting and indenting
-        Plugin 'othree/yajs.vim'                                 " Yet Another Javascript Syntax
+        " Plugin 'othree/yajs.vim'                                 " Yet Another Javascript Syntax
         Plugin 'othree/es.next.syntax.vim'                       " ES.Next syntax
-				Plugin 'isRuslan/vim-es6'                                " Snippets for ES6
-				Plugin 'gavocanov/vim-js-indent'                         " JS indentation for VIM
+        Plugin 'isRuslan/vim-es6'                                " Snippets for ES6
+        Plugin 'gavocanov/vim-js-indent'                         " JS indentation for VIM
         Plugin 'othree/javascript-libraries-syntax.vim'          " JS Syntax for libraries
-				Plugin 'burnettk/vim-angular'                            " angularjs with vim
-        " Plugin 'pangloss/vim-javascript'                       " No longer maintained
+				" Plugin 'burnettk/vim-angular'                            " angularjs with vim
+        Plugin 'pangloss/vim-javascript'                         " No longer maintained
+        Plugin 'flowtype/vim-flow'                               " Flow Checking
 
         "SML
         Plugin 'chilicuil/vim-sml-coursera'                     "sml repl and indent files
@@ -385,7 +386,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
     let g:syntastic_check_on_wq = 0
     " let g:syntastic_quiet_messages = {'level': 'warnings'}
     " let g:syntastic_html_tidy_ignore_errors = [" proprietary attribute \"ng-"]
-    let g:syntastic_javascript_checkers = ['eslint']
+    let g:syntastic_javascript_checkers = ['eslint', 'flow']
     let g:syntastic_haskell_checkers = ['hlint']
 
 " Fugitive
@@ -501,6 +502,16 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 " vim-javascript
     let g:javascript_enable_domhtmlcss = 1
     let g:javascript_plugin_flow = 1
+    set conceallevel=1
+    let g:javascript_conceal_function             = "λ"
+    let g:javascript_conceal_null                 = "ø"
+    let g:javascript_conceal_this                 = "@"
+    let g:javascript_conceal_return               = "⇚"
+    let g:javascript_conceal_undefined            = "¿"
+    let g:javascript_conceal_NaN                  = "ℕ"
+    let g:javascript_conceal_prototype            = "¶"
+    let g:javascript_conceal_static               = "•"
+    map <leader>c :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 
 " vim-pencil
 augroup pencil
