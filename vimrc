@@ -359,6 +359,9 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
         Plugin 'floobits/floobits-neovim'
         Plugin 'vim-scripts/SyntaxRange'
 
+        "F#
+        Plugin 'fsharp/vim-fsharp'
+
 				" All of your Plugins must be added before the following line
 				call vundle#end()            " required
 				filetype plugin indent on    " required
