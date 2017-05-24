@@ -1,27 +1,17 @@
 # ALIAS
 
-alias aliases='nv ~/dotfiles/zsh/alias'
+alias aliases='v ~/dotfiles/zsh/alias'
 
 alias l='ls -la'
-alias vim='/usr/local/Cellar/vim/8.0.0046/bin/vim'
-alias v='nvim'
-alias fullstack="cd ~/dev/Fullstack"
-alias sandbox="cd ~/dev/Sandbox"
-alias scrap="cd ~/dev/scrap"
-alias euler="cd ~/dev/Problems/Project-Euler"
+alias v='vim'
 alias c="clear"
 alias e="exit"
 alias ip="ifconfig | grep inet"
 alias cwd="pwd|pbcopy"
-alias d="cd ~/dotfiles"
+alias d="cd ~/dev/dotfiles"
 alias ctags="ctags -R --exclude=.git --exclude=log ."
 alias src="source ~/.zshrc"
 alias dev="cd ~/dev"
-
-# NeoVim
-nv () {
-  nvim $1
-}
 
 # JS
 js () {

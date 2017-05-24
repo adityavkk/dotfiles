@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/Aditya/.oh-my-zsh
+export ZSH=/Users/akumarakrishnan/.oh-my-zsh
 
 # ZSH_THEME="agnoster"
 #ZSH_THEME="blinks"
@@ -27,7 +27,7 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 export PATH="$PATH:/usr/local/smlnj/bin"
 
 source $ZSH/oh-my-zsh.sh
-source ~/dotfiles/zsh/alias
+source ~/dev/dotfiles/zsh/alias
 
 # Vim Keybindings
 bindkey -v
