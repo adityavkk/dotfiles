@@ -1,6 +1,6 @@
 # ALIAS
 
-alias aliases='v ~/dotfiles/zsh/alias'
+alias aliases='v ~/dev/dotfiles/zsh/alias'
 
 alias l='ls -la'
 alias v='vim'
