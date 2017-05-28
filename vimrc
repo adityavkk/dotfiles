@@ -5,6 +5,7 @@ set t_Co=256
 
 set nocompatible
 syntax on
+syntax enable
 
 " automatically remove trailing whitespaces
 autocmd BufWritePre * %s/\s\+$//e
@@ -45,15 +46,15 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " make it obvious where 80 char is
-set colorcolumn=80
-hi LineProximity ctermfg=white ctermbg=gray guifg=white guibg=#A3A3A3
-hi LineOverflow  ctermfg=white ctermbg=red guifg=white guibg=#FF2270
+set colorcolumn=150
+"hi LineProximity ctermfg=white ctermbg=gray guifg=white guibg=#A3A3A3
+"hi LineOverflow  ctermfg=white ctermbg=red guifg=white guibg=#FF2270
 
-autocmd BufEnter,VimEnter,FileType *.* let w:m1=matchadd('LineProximity', '\%<85v.\%>80v', -1)
-autocmd BufEnter,VimEnter,FileType *.* let w:m2=matchadd('LineOverflow', '\%>84v.\+', -1)
+"autocmd BufEnter,VimEnter,FileType *.* let w:m1=matchadd('LineProximity', '\%<85v.\%>80v', -1)
+"autocmd BufEnter,VimEnter,FileType *.* let w:m2=matchadd('LineOverflow', '\%>84v.\+', -1)
 
-autocmd BufEnter,VimEnter,FileType,VimEnter *.* autocmd WinEnter *.rb,*.coffee let w:created=1
-autocmd BufEnter,VimEnter,FileType,VimEnter *.* let w:created=1
+"autocmd BufEnter,VimEnter,FileType,VimEnter *.* autocmd WinEnter *.rb,*.coffee let w:created=1
+"autocmd BufEnter,VimEnter,FileType,VimEnter *.* let w:created=1
 
 " status line
 set laststatus=2                        " display status line
@@ -151,3 +152,6 @@ let g:syntastic_fsharp_checkers = ['syntax']
 set omnifunc=syntaxcomplete#Complete
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:SuperTabDefaultCompletionType = "context"
+
+" Vim-Dash
+nmap <silent> <leader>d <Plug>DashSearch

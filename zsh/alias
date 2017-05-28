@@ -11,7 +11,10 @@ alias cwd="pwd|pbcopy"
 alias d="cd ~/dev/dotfiles"
 alias ctags="ctags -R --exclude=.git --exclude=log ."
 alias src="source ~/.zshrc"
-alias dev="cd ~/dev"
+alias dev="/Users/akumarakrishnan/Documents/dev"
+alias hosts="sudo vim /etc/hosts"
+alias flush_dns_cache="sudo killall -HUP mDNSResponder"
+alias win="cd /Volumes/C"
 
 # JS
 js () {
