@@ -1,3 +1,6 @@
+" Copy and paste to system clipboard
+set clipboard=unnamed
+
 " Colorscheme
 set background=dark
 colorscheme hybrid
@@ -58,9 +61,9 @@ set colorcolumn=150
 
 " status line
 set laststatus=2                        " display status line
-set statusline=%F
 set wildmenu
 set showcmd
+
 
 set lazyredraw                          " enable better scroll with syntastic
 set cursorline                          " line highlighing
@@ -78,8 +81,6 @@ set listchars+=extends:>          " The character to show in the last column whe
 set listchars+=precedes:<         " The character to show in
                                               "   the last column when wrap is
 
-" Copy and paste to system clipboard
-set clipboard=unnamed
 
 """ PLUGINS
 "NerdTree
@@ -155,3 +156,29 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " Vim-Dash
 nmap <silent> <leader>d <Plug>DashSearch
+
+"Vim Javascript
+set conceallevel=1
+set cole=1
+
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" use ag but fall back to ack if it doesn't exist
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif

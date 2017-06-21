@@ -7,6 +7,7 @@ alias v='vim'
 alias c="clear"
 alias e="exit"
 alias ip="ifconfig | grep inet"
+alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias cwd="pwd|pbcopy"
 alias d="cd ~/dev/dotfiles"
 alias ctags="ctags -R --exclude=.git --exclude=log ."
