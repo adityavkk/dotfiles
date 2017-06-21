@@ -1,5 +1,5 @@
 " Copy and paste to system clipboard
-set clipboard=unnamed
+set clipboard=unnamedplus,autoselect
 
 " Colorscheme
 set background=dark
@@ -9,6 +9,21 @@ set t_Co=256
 set nocompatible
 syntax on
 syntax enable
+
+set showmode
+set smartcase
+set smarttab
+set smartindent
+set autoindent
+set incsearch
+set history=1000
+
+set completeopt=menuone,menu,longest
+set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
+set wildmode=longest,list,full
+set completeopt+=longest
+
+set cmdheight=1
 
 " automatically remove trailing whitespaces
 autocmd BufWritePre * %s/\s\+$//e
@@ -97,11 +112,18 @@ let g:ctrlp_custom_ignore = {
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+map <Leader>s :SyntasticToggleMode<CR>
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+" GHC-MOD
+map <silent> tw :GhcModTypeInsert<CR>
+map <silent> ts :GhcModSplitFunCase<CR>
+map <silent> tq :GhcModType<CR>
+map <silent> te :GhcModTypeClear<CR>
 
 " Vim-Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -182,3 +204,24 @@ let g:syntastic_check_on_wq = 0
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+" Supertab
+let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+
+if has("gui_running")
+    imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+  else " no gui
+      if has("unix")
+          inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+        endif
+      endif
+
+let g:haskellmode_completion_ghc = 1
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+" Tabularize
+let g:haskell_tabular = 1
+
+vmap a= :Tabularize /=<CR>
+vmap a; :Tabularize /::<CR>
+vmap a- :Tabularize /-><CR>
