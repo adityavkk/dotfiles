@@ -200,10 +200,13 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" VIM Ack
 " use ag but fall back to ack if it doesn't exist
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+noremap <Leader>a :Ack<CR>
 
 " Supertab
 let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
