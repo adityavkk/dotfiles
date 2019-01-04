@@ -11,12 +11,15 @@ alias scrap="cd ~/dev/scrap"
 alias euler="cd ~/dev/Problems/Project-Euler"
 alias c="clear"
 alias e="exit"
-alias ip="ifconfig | grep inet"
 alias cwd="pwd|pbcopy"
 alias d="cd ~/dotfiles"
 alias ctags="ctags -R --exclude=.git --exclude=log ."
 alias src="source ~/.zshrc"
 alias dev="cd ~/dev"
+
+ip () {
+  ifconfig | grep "inet "
+}
 
 # NeoVim
 nv () {
@@ -52,6 +55,9 @@ alias racket="/Applications/Racket\ v6.7/bin/racket"
 rkt () {
   racket -f $1 -i
 }
+
+# F#
+alias fsi='fsharpi'
 
 # Git
 alias gs='git status -sb'
