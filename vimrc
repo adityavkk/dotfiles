@@ -72,16 +72,37 @@ set directory^=~/.vim/_temp//           " where to put swap files.
 nmap <Leader>hs :set hlsearch! hlsearch?<CR>
 call plug#begin('~/.local/share/nvim/plugged')
 
+" Space to toggle folds
+nnoremap <Space> za
+
+"""" Auto Modifiers
+
+  " autosave on blur
+  au FocusLost * silent! wall
+
+  " Wild Settings
+  " Disable output and VCS files
+  set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem,*.so,.cabal-sandbox
+
+  " Disable archive files
+  set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+
+  " Ignore bundler and sass cache
+  set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+
+  " Ignore librarian-chef, vagrant, test-kitchen and Berkshelf cache
+  set wildignore+=*/tmp/librarian/*,*/.vagrant/*,*/.kitchen/*,*/vendor/cookbooks/*
+
+  " Ignore rails temporary asset caches
+  set wildignore+=*/tmp/cache/assets/*/sprockets/*,*/tmp/cache/assets/*/sass/*
+
+  " Disable temp and backup files
+  set wildignore+=*.swp,*~,._*
+
 """"""""""""""""""""""""""""""""""""""""" Splitting """""""""""""""""""""""""""""""""""""""
 " quicker splitting
 map <Leader>sp :split<CR>
 map <Leader>vp :vsplit<CR>
-
-" Better movement between splits
-nnoremap <C-J> <C-w><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 " More natural split opening
 set splitbelow
@@ -111,6 +132,9 @@ Plug 'autozimu/LanguageClient-neovim', {
 "--- Vim Surround
     Plug 'tpope/vim-surround'
 
+"--- DelimitMate for automatically closing parens and brackets
+    Plug 'Raimondi/delimitMate'
+
 "---Async completion framework for nvim
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'ervandew/supertab' " Povides omni complete with TAB
@@ -118,19 +142,20 @@ Plug 'autozimu/LanguageClient-neovim', {
 " Wrapper around Ack/Ag
     Plug 'mileszs/ack.vim'
 
-" Make sure you use single quotes
     Plug 'scrooloose/nerdcommenter'
-" On-demand loadingclilpboard
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 "---Ctrl-p
     Plug 'kien/ctrlp.vim'
+
+"--- Tmux/Vim Navigation
+    Plug 'christoomey/vim-tmux-navigator'
+
 "---Color Schemes
     Plug 'flazz/vim-colorschemes'
     Plug 'vim-airline/vim-airline' "AirLine
     Plug 'vim-airline/vim-airline-themes'
     Plug 'edkolev/tmuxline.vim'
-
 
 "---Buffer management
     Plug 'jeetsukumaran/vim-buffergator'
@@ -138,6 +163,9 @@ Plug 'autozimu/LanguageClient-neovim', {
 "---Syntax Highlighting
     Plug 'leafgarland/typescript-vim'
     Plug 'purescript-contrib/purescript-vim' " purescript
+
+"--- Dash Integration
+		Plug 'rizzatti/dash.vim'
 
 call plug#end()
 
@@ -241,6 +269,14 @@ endif
 
 nnoremap <C-f> :Ack!
 
+""""""""""""""""""""""""""""""""""""""""" Supertab """""""""""""""""""""""""""""""""""""""
+" sets the completion to be triggered by context
+let g:SuperTabDefaultCompletionType = "context"
+
 """"""""""""""""""""""""""""""""""""""""" DEBUGGING """""""""""""""""""""""""""""""""""""""
 let g:psc_ide_log_level = 3 " Log level for psc ide
 
+
+""""""""""""""""""""""""""""""""""""""""" Dash """""""""""""""""""""""""""""""""""""""
+" Leader d for dash search
+nmap <silent> <leader>d <Plug>DashSearch
