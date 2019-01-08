@@ -251,7 +251,10 @@ call NERDTreeHighlightFile('cpp', 'Magenta', 'none', '#ff00ff', '#151515')
 
 """"""""""""""""""""""""""""""""""""""""" CTRL-P """""""""""""""""""""""""""""""""""""""
 
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git' " ignore node_modules and git
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](doc|tmp|node_modules|lib|\.git)',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 """"""""""""""""""""""""""""""""""""""""" VIM-BUFFERGATOR """""""""""""""""""""""""""""""""""""""
 " <Leader>b to open a window listing all buffers
