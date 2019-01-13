@@ -276,6 +276,9 @@ nnoremap <C-f> :Ack!
 " sets the completion to be triggered by context
 let g:SuperTabDefaultCompletionType = "context"
 
+" get file autocomplete to use the directory of the file
+inoremap ./<C-X><C-F> <C-O>:lcd %:p:h<CR><C-X><C-F>
+
 """"""""""""""""""""""""""""""""""""""""" DEBUGGING """""""""""""""""""""""""""""""""""""""
 let g:psc_ide_log_level = 3 " Log level for psc ide
 
@@ -283,3 +286,6 @@ let g:psc_ide_log_level = 3 " Log level for psc ide
 """"""""""""""""""""""""""""""""""""""""" Dash """""""""""""""""""""""""""""""""""""""
 " Leader d for dash search
 nmap <silent> <leader>d <Plug>DashSearch
+
+""""""""""""""""""""""""""""""""""""""""" Useful Keybinds """""""""""""""""""""""""""""""""""""""
+" CTRL-O to go back to the last location (works across buffers)
