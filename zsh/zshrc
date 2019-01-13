@@ -35,6 +35,7 @@ source ~/dotfiles/zsh/alias
 
 # Vim Keybindings
 bindkey -v
+bindkey '^R' history-incremental-pattern-search-backward # Get CTRL-R back to search history
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
