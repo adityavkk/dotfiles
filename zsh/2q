@@ -25,7 +25,6 @@ plugins=(git)
 
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 export PATH="$PATH:/usr/local/smlnj/bin"
-export PATH="$PATH:/Users/akumarakrishnan/.local/bin"
 
 source $ZSH/oh-my-zsh.sh
 source ~/dev/dotfiles/zsh/alias

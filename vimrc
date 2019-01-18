@@ -1,9 +1,28 @@
+" Color Scheme
+" Set typewriter as colorscheme
+colorscheme typewriter
+"colorscheme hybrid
+
+" Set typewriter airline theme
+let g:airline_theme = 'typewriter'
+"let g:airline_theme='one'
+
+" Activate FOCUS mode with F12
+nmap <F12> :Goyo <bar> Limelight!!<CR>"
+
+
+" Change the cursor from block to i-beam in INSERT mode
+let &t_SI = "\e[5 q"
+let &t_EI = "\e[1 q"
+augroup myCmds
+  au!
+  autocmd VimEnter * silent !echo -ne "\e[1 q"
+augroup END
 " Copy and paste to system clipboard
 set clipboard=unnamedplus,autoselect
 
 " Colorscheme
-set background=dark
-colorscheme hybrid
+"set background=dark
 set t_Co=256
 
 set nocompatible
@@ -47,6 +66,7 @@ set shiftwidth=2                        " an autoindent is two spaces
 set tabstop=2                           " a tab is two spaces
 set softtabstop=2
 
+
 " better split window feel
 set splitbelow
 set splitright
@@ -62,6 +82,8 @@ set autoread
 " quicker split movements
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+nnoremap <C-n> :source ~/dev/dotfiles/vim/writer.vim
 
 " make it obvious where 80 char is
 set colorcolumn=150
@@ -81,8 +103,8 @@ set showcmd
 
 
 set lazyredraw                          " enable better scroll with syntastic
-set cursorline                          " line highlighing
-set nowrap                              " don't wrap lines
+"set cursorline                          " line highlighing
+"set nowrap                              " don't wrap lines
 set backspace=indent,eol,start          " backspace through everything
 
 "List Chars
@@ -130,7 +152,6 @@ let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 let g:one_allow_italics = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='one'
 
 " Tmux Line
   let g:tmuxline_preset = {
@@ -228,3 +249,16 @@ let g:haskell_tabular = 1
 vmap a= :Tabularize /=<CR>
 vmap a; :Tabularize /::<CR>
 vmap a- :Tabularize /-><CR>
+
+"Goyo/Limelight
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+noremap <Leader>w :Goyo<CR>
+
+"Text wrapping
+set wrap
+set linebreak
+set nolist
+set textwidth=0
+set wrapmargin=0
+set formatoptions-=t
