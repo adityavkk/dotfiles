@@ -55,6 +55,9 @@ name = "lang#javascript"
 name = "ui"
 
 [[layers]]
+name = "tmux"
+
+[[layers]]
 name = "tools#dash"
 
 [[layers]]
