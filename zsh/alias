@@ -2,7 +2,7 @@
 
 alias aliases='nv ~/dotfiles/zsh/alias'
 
-alias l='ls -la'
+alias l='ls -la --color=auto'
 alias vim='/usr/local/Cellar/vim/8.0.0046/bin/vim'
 alias v='nvim'
 alias fullstack="cd ~/dev/Fullstack"
@@ -17,6 +17,47 @@ alias ctags="ctags -R --exclude=.git --exclude=log ."
 alias src="source ~/.zshrc"
 alias dev="cd ~/dev"
 alias notes="/Users/Aditya/Dropbox/Notes"
+
+########## Movement ######### 
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+
+######### Searching #########   
+alias grep='grep --color=auto'
+alias filename='find . -name'
+
+#########  Misc #########  
+alias path='echo -e ${PATH//:/\\n}'
+alias now='date +"%T"'
+alias nowtime=now
+alias nowdate='date +"%d-%m-%Y"'
+
+#########  Network ######### 
+alias ports='netstat -tulanp'
+
+######### Performance ######### 
+## pass options to free ##
+alias meminfo='free -m -l -t'
+ 
+## get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+ 
+## get top process eating cpu ##
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+ 
+## Get server cpu info ##
+alias cpuinfo='lscpu'
+ 
+## get GPU ram on desktop / laptop##
+alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+
+###################################
 
 ip () {
   ifconfig | grep "inet "
@@ -80,3 +121,6 @@ take () {
   mkdir $1
   cd $1
 }
+
+# Find by filename in current folder
+
