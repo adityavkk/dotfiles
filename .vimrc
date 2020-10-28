@@ -177,8 +177,6 @@ Plug 'neoclide/coc-metals' " FOR SCALA
 Plug 'neoclide/coc-go'
 Plug 'neoclide/coc-sh' 
 
-
-
 " Initialize plugin system
 call plug#end()
 "
