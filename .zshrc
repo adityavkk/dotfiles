@@ -1,16 +1,19 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/Aditya/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
+
+ZSH_DISABLE_COMPFIX=true
 
 # ZSH_THEME="agnoster"
 #ZSH_THEME="blinks"
 # ZSH_THEME="kolo"
-ZSH_THEME="miloshadzic"
+#ZSH_THEME="miloshadzic"
+ZSH_THEME="fino-time"
 # ZSH_THEME="agnostic"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
 
-EDITOR="nvim"
+EDITOR="vim"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -25,13 +28,9 @@ plugins=(git)
 
 # User configuration
 
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
-export PATH="$PATH:/usr/local/smlnj/bin"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.local/bin/hie"
-
 source $ZSH/oh-my-zsh.sh
-source ~/dotfiles/zsh/alias
+source $HOME/zsh/env
+source $HOME/zsh/alias
 
 # Vim Keybindings
 bindkey -v

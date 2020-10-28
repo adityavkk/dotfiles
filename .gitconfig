@@ -1,0 +1,71 @@
+[alias]
+	i = init
+	s = status
+	p = push
+	a = add
+	c = commit -m
+	b = branch
+
+	ra = remote add
+	po = push origin
+	co = checkout
+	
+	pom = push origin master
+
+	# Show all uranches
+  br = branch -av
+
+  # Graph
+  g = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+	# View the log and diff for a commit (previous if no SHA1 provided)
+	details = log -n1 -p --format=fuller
+
+	# Show all of my configured aliases
+  aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
+
+  # Start a new local repository and perform initial commit
+  this = !git init && git add . && git commmit -m \"Initial commit.\"
+
+[color]
+    ui = true
+
+
+[color "branch"]
+    current = yellow reverse
+    local = yello
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = red
+
+[diff]
+    mnemonicprefix = true
+
+[merge]
+    log = true
+    ff = false
+
+[url "https://github.com/"]
+	insteadOf = gh:
+
+# Sets the osxkeychain as the cred manager
+[credential]
+    helper = osxkeychain
+
+[user]
+	email = adityavkk@gmail.com
+	name = Aditya K
+
+# Don't add any configuration below this line
+# This is to support a local gitconfig file
+[include]
+  path = .gitconfig.local

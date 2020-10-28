@@ -1,22 +1,18 @@
 # ALIAS
 
-alias aliases='nv ~/dotfiles/zsh/alias'
+alias aliases='v ~/zsh/alias'
 
 alias l='ls -la'
-alias vim='/usr/local/Cellar/vim/8.0.0046/bin/vim'
-alias v='nvim'
-alias fullstack="cd ~/dev/Fullstack"
+alias v='vim'
 alias sandbox="cd ~/dev/Sandbox"
 alias scrap="cd ~/dev/scrap"
-alias euler="cd ~/dev/Problems/Project-Euler"
 alias c="clear"
 alias e="exit"
 alias cwd="pwd|pbcopy"
-alias d="cd ~/dotfiles"
+alias d="cd ~/dev/dotfiles"
 alias ctags="ctags -R --exclude=.git --exclude=log ."
 alias src="source ~/.zshrc"
 alias dev="cd ~/dev"
-alias notes="/Users/Aditya/Dropbox/Notes"
 
 ########## Movement ######### 
 alias ..='cd ..'
@@ -100,18 +96,6 @@ rkt () {
 
 # F#
 alias fsi='fsharpi'
-
-# Git
-alias gs='git status -sb'
-alias gco='git checkout'
-alias gcb='gco -b'
-alias ga='git add -A'
-alias gcm='git commit -m'
-alias hlog='git log --date-order --graph --date=short --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ad%Creset %C(red bold)%d%Creset%s"'
-alias alog='git log --date-order --all --graph --date=short --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ad%Creset %C(red bold)%d%Creset%s"'
-alias glog='git log --oneline'
-alias gpl='git pull'
-alias gpu='git push origin'
 
 # Python
 alias py='python3'
