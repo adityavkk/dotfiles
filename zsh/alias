@@ -3,17 +3,18 @@
 alias aliases='v ~/zsh/alias'
 
 alias l='ls -la'
+alias g='git'
 alias v='vim'
 alias sandbox="cd ~/dev/Sandbox"
 alias scrap="cd ~/dev/scrap"
 alias c="clear"
 alias e="exit"
 alias cwd="pwd|pbcopy"
-alias d="cd ~/dev/dotfiles"
 alias ctags="ctags -R --exclude=.git --exclude=log ."
 alias src="source ~/.zshrc"
 alias dev="cd ~/dev"
-
+alias dotfiles="cd ~/dev/dotfiles"
+alias dir="tree -aI 'node_modules|cache|test_*|.git'"
 ########## Movement ######### 
 alias ..='cd ..'
 alias ...='cd ../../../'

@@ -57,6 +57,10 @@ brew install ssh-copy-id
 brew install tree
 brew install httpie
 
+# Display and fonts
+brew tap homebrew/cask-fonts
+brew cask install font-fira-code-nerd-font # Remember to set the font on iTerm
+
 # Install Core Dev Tools
 echo_with_prompt "Installing dev tools, runtimes, and DKs -- This will need some user input"
 

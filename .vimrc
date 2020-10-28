@@ -1,3 +1,9 @@
+" Sections
+" -- WINDOW MANAGEMENT 
+" -- PLUGINS
+" ---- NERD-COMMENTER
+" ---- NERD-TREE
+" ---- COC Language Server 
 
 " Make Vim more useful
 set nocompatible
@@ -6,7 +12,7 @@ set nocompatible
 set clipboard=unnamed
 
 " Enhance command-line completion
-set wildmenu
+set wildmenu "Display command line’s tab complete options as a menu.
 
 " Allow cursor keys in insert mode
 set esckeys
@@ -30,6 +36,9 @@ let mapleader=","
 set binary
 set noeol
 
+" autosave on blur
+au FocusLost * silent! wall
+
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
@@ -40,7 +49,6 @@ endif
 
 " Don’t create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*
-
 
 " Respect modeline in files
 set modeline
@@ -60,13 +68,14 @@ syntax on
 set cursorline
 
 " Indentation
-set autoindent
-set backspace=indent,eol,start
+set cindent
 set expandtab " Inserts spaces instead of tab
-set shiftwidth=2 " Sets indentation to 2
+set shiftwidth=2 " When shifting, indent using 2 spaces
+set shiftround " When shifting lines, round the indentation to the nearest multiple of “shiftwidth.”
 
 " Make tabs as wide as two spaces
 set tabstop=2
+set softtabstop=2
 
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
@@ -93,12 +102,14 @@ set mouse=a
 
 " Disable error bells
 set noerrorbells
+set visualbell " Flash the screen instead of beeping on errors.
 
 " Don’t reset cursor to start of line when moving around.
 set nostartofline
 
 " Show the cursor position
 set ruler
+set numberwidth=5
 
 " Don’t show the intro message when starting Vim
 set shortmess=atI
@@ -144,8 +155,22 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
 
+""----------------------------------------------------- START --- WINDOW MANAGEMENT -----------------------------------------------------"
+" quicker splitting	
+map <Leader>sp :split<CR>	
+map <Leader>vp :vsplit<CR>	
 
-"""""""""""""""""""""""""""""""""""""""""""""""""" PLUGINS """""""""""""""""""""""""""""""""""""""""""""""""
+" More natural split opening	
+set splitbelow	
+set splitright
+
+" Quicker Window Movement
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+""----------------------------------------------------- END --- WINDOW MANAGEMENT -----------------------------------------------------"
+
+""----------------------------------------------------- START --- PLUGINS  -----------------------------------------------------"
 
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -161,11 +186,16 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-easy-align'
 
+"""" Editing """"
+Plug 'tpope/vim-surround'
+Plug 'preservim/nerdcommenter'
+
 """" Navigation """"
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "Only loads on demand
 
 """" Display """"
 Plug 'flazz/vim-colorschemes'
+Plug 'ryanoasis/vim-devicons'
 
 """" Language Server Protocol Support """"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -180,8 +210,59 @@ Plug 'josa42/coc-sh'
 " Initialize plugin system
 call plug#end()
 "
-"Use the Solarized Dark theme
-colo hybrid_material
+" Color settings
+set term=xterm-256color
+set t_Co=256
+set t_ut= 
+let g:solarized_termcolors = 256
+colo xoria256
+
+""----------------------------------------------------- BEGIN - NERD-COMMENTER -----------------------------------------------------"
+"" [count]<leader>cc 
+"" Comment out the current line or text selected in visual mode.
+
+"" [count]<leader>c<space> |NERDCommenterToggle|
+"" Toggles the comment state of the selected line(s). If the topmost selected line is commented, all selected lines are uncommented and vice versa.
+
+"" [count]<leader>cs |NERDCommenterSexy|
+"" Comments out the selected lines with a pretty block formatted layout.
+
+"" [count]<leader>cm |NERDCommenterMinimal|
+"" Comments the given lines using only one set of multipart delimiters.
+
+
+""----------------------------------------------------- END - NERD-COMMENTER -----------------------------------------------------"
+""----------------------------------------------------- BEGIN - NERD-TREE -----------------------------------------------------"
+" Use Ctrl-N to toggle NerdTree
+map <C-n> :NERDTreeToggle<CR>
+
+" Open NerdTree automatically when vim starts up and no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Open NerdTree automatically when vim starts in a directory
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('py', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('hs', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('cpp', 'Magenta', 'none', '#ff00ff', '#151515')
+
+""----------------------------------------------------- END - NERD-TREE -----------------------------------------------------"
 
 ""----------------------------------------------------- BEGIN - COC Language Server -----------------------------------------------------"
 " TextEdit might fail if hidden is not set.
