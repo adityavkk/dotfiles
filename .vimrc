@@ -173,9 +173,9 @@ Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json'
 Plug 'neoclide/coc-python'
 Plug 'neoclide/coc-java'
-Plug 'neoclide/coc-metals' " FOR SCALA
-Plug 'neoclide/coc-go'
-Plug 'neoclide/coc-sh' 
+Plug 'scalameta/coc-metals' " FOR SCALA
+Plug 'josa42/coc-go'
+Plug 'josa42/coc-sh' 
 
 " Initialize plugin system
 call plug#end()
