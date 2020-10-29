@@ -24,7 +24,7 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
@@ -44,6 +44,4 @@ bindkey '^R' history-incremental-pattern-search-backward # Get CTRL-R back to se
 
 export HTTP_PROXY=server.proxy.vzwcorp.com:9290
 export HTTPS_PROXY=server.proxy.vzwcorp.com:9290
-export NO_PROXY="registry-1.docker.io/v2,k8s.gcr.io,node.kubernetes.io,github.com"
-
-brew ls zsh-autosuggestions >> source
+export NO_PROXY="registry-1.docker.io/v2,k8s.gcr.io,node.kubernetes.io"
