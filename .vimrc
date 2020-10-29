@@ -15,9 +15,6 @@ set clipboard=unnamed
 " Enhance command-line completion
 set wildmenu "Display command line’s tab complete options as a menu.
 
-" Allow cursor keys in insert mode
-set esckeys
-
 " Allow backspace in insert mode
 set backspace=indent,eol,start
 
@@ -212,7 +209,6 @@ Plug 'josa42/coc-sh'
 call plug#end()
 "
 ""----------------------------------------------------- BEGIN - COLOR-SETTINGS  -----------------------------------------------------"
-set term=xterm-256color
 set t_Co=256
 set t_ut=
 let g:solarized_termcolors = 256
