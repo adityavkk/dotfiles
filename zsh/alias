@@ -4,7 +4,7 @@ alias aliases='v ~/zsh/alias'
 
 alias l='ls -la'
 alias g='git'
-alias v='vim'
+alias v='nvim'
 alias sandbox="cd ~/dev/Sandbox"
 alias scrap="cd ~/dev/scrap"
 alias c="clear"
@@ -97,6 +97,13 @@ alias racket="/Applications/Racket\ v6.7/bin/racket"
 rkt () {
   racket -f $1 -i
 }
+
+# Java Versions
+jdk() {
+        version=$1
+        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+        java -version
+ }
 
 # F#
 alias fsi='fsharpi'

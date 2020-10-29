@@ -185,15 +185,16 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
 
 """" Editing """"
-Plug 'tpope/vim-surround'
-Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-surround' "The classic surround!
+Plug 'preservim/nerdcommenter' "Provides for commenting
+Plug 'sbdchd/neoformat' "Code Formatter
 
 """" Navigation """"
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "Only loads on demand
 
 """" Display """"
 Plug 'flazz/vim-colorschemes'
-Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons' " Dev icons for nerd tree and mroe
 
 """" Language Server Protocol Support """"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -201,13 +202,51 @@ Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json'
 Plug 'neoclide/coc-python'
 Plug 'neoclide/coc-java'
-Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'} " FOR SCALA
+"
+" Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'} " FOR SCALA -- DECIDED TO INSTALL IT with :CoCInstall coc-metals
 Plug 'josa42/coc-go'
 Plug 'josa42/coc-sh'
+
+" Denite for fuzzy searching
+if has('nvim')
+  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/denite.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 " Initialize plugin system
 call plug#end()
 "
+
+""----------------------------------------------------- BEGIN - NEOFORMAT  -----------------------------------------------------"
+" Runs NeoFormat on save!
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
+""----------------------------------------------------- END - NEOFORMAT  -----------------------------------------------------"
+
+""----------------------------------------------------- BEGIN - DENITE  -----------------------------------------------------"
+"" Define mappings
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
+""----------------------------------------------------- END - DENITE  -----------------------------------------------------"
+
 ""----------------------------------------------------- BEGIN - COLOR-SETTINGS  -----------------------------------------------------"
 set t_Co=256
 set t_ut=

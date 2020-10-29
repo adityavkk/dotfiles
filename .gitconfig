@@ -54,11 +54,13 @@
     log = true
     ff = false
 
-[url "https://github.com/"]
+[http "https://github.com"]
+  proxy = server.proxy.vzwcorp.com:9290 # NEEDS CHANGING BASED ON PROXY
+	sslVerify = false
 	insteadOf = gh:
 
 [http "https://gitlab.visible.com"]
-  proxy = server.proxy.vzwcorp.com:9290
+  proxy = server.proxy.vzwcorp.com:9290 # NEEDS CHANGING BASED ON PROXY
 	sslVerify = false
 
 # Sets the osxkeychain as the cred manager

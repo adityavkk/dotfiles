@@ -74,10 +74,12 @@ echo_with_prompt "Installing dev tools, runtimes, and DKs -- This will need some
 
 # EDIT THIS LIST TO ADD MORE TOOLS
 # cs for scala
+# TODO: pyenv to manage python installations -- make sure to pyenv install (latest python version)
+
 tools=(
 	"install docker"
 	"install minikube"
-	"install python"
+  "install pyenv"
   "cask install adoptopenjdk"
   "install coursier/formulas/coursier && cs setup"
 )
@@ -115,6 +117,7 @@ fi
 # INSTALLING USEFUL NODE TOOLS
 brew install yarn
 yarn global add carbon-now-cli
+yarn global add nodemon
 yarn global add graphql-language-service-cli
 
 # Remove outdated versions from the cellar.
