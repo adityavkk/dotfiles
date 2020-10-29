@@ -56,19 +56,26 @@ brew install rename
 brew install ssh-copy-id
 brew install tree
 brew install httpie
+brew cask install iterm2
+
 
 # Display and fonts
 brew tap homebrew/cask-fonts
 brew cask install font-fira-code-nerd-font # Remember to set the font on iTerm
+brew install zsh-syntax-highlighting
+brew install zsh-autosuggestions
 
 # Install Core Dev Tools
 echo_with_prompt "Installing dev tools, runtimes, and DKs -- This will need some user input"
 
 # EDIT THIS LIST TO ADD MORE TOOLS
+# cs for scala
 tools=(
 	"install docker"
 	"install minikube"
 	"install python"
+  "cask install adoptopenjdk"
+  "install coursier/formulas/coursier && cs setup"
 )
 for i in "${tools[@]}"; do
 		echo_with_prompt "Do you want to : $i? (y/n)"

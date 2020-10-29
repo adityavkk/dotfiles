@@ -57,6 +57,10 @@
 [url "https://github.com/"]
 	insteadOf = gh:
 
+[http "https://gitlab.visible.com"]
+  proxy = server.proxy.vzwcorp.com:9290
+	sslVerify = false
+
 # Sets the osxkeychain as the cred manager
 [credential]
     helper = osxkeychain

@@ -1,9 +1,10 @@
 " Sections
-" -- WINDOW MANAGEMENT 
+" -- WINDOW MANAGEMENT
 " -- PLUGINS
+"  --- COLOR-SETTINGS
 " ---- NERD-COMMENTER
 " ---- NERD-TREE
-" ---- COC Language Server 
+" ---- COC Language Server
 
 " Make Vim more useful
 set nocompatible
@@ -156,12 +157,12 @@ if has("autocmd")
 endif
 
 ""----------------------------------------------------- START --- WINDOW MANAGEMENT -----------------------------------------------------"
-" quicker splitting	
-map <Leader>sp :split<CR>	
-map <Leader>vp :vsplit<CR>	
+" quicker splitting
+map <Leader>hp :split<CR>
+map <Leader>vp :vsplit<CR>
 
-" More natural split opening	
-set splitbelow	
+" More natural split opening
+set splitbelow
 set splitright
 
 " Quicker Window Movement
@@ -203,22 +204,23 @@ Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json'
 Plug 'neoclide/coc-python'
 Plug 'neoclide/coc-java'
-Plug 'scalameta/coc-metals' " FOR SCALA
+Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'} " FOR SCALA
 Plug 'josa42/coc-go'
-Plug 'josa42/coc-sh' 
+Plug 'josa42/coc-sh'
 
 " Initialize plugin system
 call plug#end()
 "
-" Color settings
+""----------------------------------------------------- BEGIN - COLOR-SETTINGS  -----------------------------------------------------"
 set term=xterm-256color
 set t_Co=256
-set t_ut= 
+set t_ut=
 let g:solarized_termcolors = 256
 colo xoria256
+""----------------------------------------------------- END - COLOR-SETTINGS  -----------------------------------------------------"
 
 ""----------------------------------------------------- BEGIN - NERD-COMMENTER -----------------------------------------------------"
-"" [count]<leader>cc 
+"" [count]<leader>cc
 "" Comment out the current line or text selected in visual mode.
 
 "" [count]<leader>c<space> |NERDCommenterToggle|

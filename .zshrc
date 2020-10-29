@@ -41,3 +41,9 @@ bindkey '^R' history-incremental-pattern-search-backward # Get CTRL-R back to se
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+export HTTP_PROXY=server.proxy.vzwcorp.com:9290
+export HTTPS_PROXY=server.proxy.vzwcorp.com:9290
+export NO_PROXY="registry-1.docker.io/v2,k8s.gcr.io,node.kubernetes.io,github.com"
+
+brew ls zsh-autosuggestions >> source
