@@ -7,6 +7,7 @@ export WORKON_HOME=~/.virtualenvs
 # If in a given virtual environment, make a virtual environment directory
 # If one does not already exist
 mkdir -p $WORKON_HOME
+mkdir -p "/.local/share/nvim/backup" # Don't put backups in current dir
 
 # Activate the new virtual environment by calling this script
 # Note that $USER will substitute for your current user

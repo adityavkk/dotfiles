@@ -45,6 +45,7 @@ brew install grep
 brew install openssh
 brew install tmux
 brew install gmp
+brew install ag
 
 # Install other useful binaries.
 brew install ack
