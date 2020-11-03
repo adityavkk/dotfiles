@@ -3,8 +3,10 @@
 	s = status
 	p = push
 	a = add
+	aa = add -A
 	c = commit -m
 	b = branch
+	bb = branch -b
 
 	ra = remote add
 	po = push origin
@@ -12,7 +14,7 @@
 	
 	pom = push origin master
 
-	# Show all uranches
+	# Show all branches
   br = branch -av
 
   # Graph

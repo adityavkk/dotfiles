@@ -79,6 +79,9 @@ echo_with_prompt "Installing dev tools, runtimes, and DKs -- This will need some
 
 tools=(
 	"install docker"
+	"install kubectl"
+	"install skaffold"
+	"install kustomize"
 	"install minikube"
   "install pyenv"
   "cask install adoptopenjdk"
