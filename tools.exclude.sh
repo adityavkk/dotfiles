@@ -85,6 +85,7 @@ tools=(
 	"install minikube"
   "install pyenv"
   "cask install adoptopenjdk"
+  "install maven"
   "install coursier/formulas/coursier && cs setup"
 )
 for i in "${tools[@]}"; do
