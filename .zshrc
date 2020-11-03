@@ -42,10 +42,10 @@ bindkey '^R' history-incremental-pattern-search-backward # Get CTRL-R back to se
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-export http_proxy=http://server.proxy.vzwcorp.com:9290
-export https_proxy=https://server.proxy.vzwcorp.com:9290
-export HTTP_PROXY=server.proxy.vzwcorp.com:9290
-export HTTPS_PROXY=server.proxy.vzwcorp.com:9290
+export http_proxy=
+export https_proxy=
+export HTTP_PROXY=
+export HTTPS_PROXY=
 export NO_PROXY="registry-1.docker.io/v2,k8s.gcr.io,node.kubernetes.io,npmjs.org"
 
 # Let pyenv control over shell path
