@@ -42,14 +42,25 @@ bindkey '^R' history-incremental-pattern-search-backward # Get CTRL-R back to se
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-export http_proxy=
+
+export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+#export CURL_CA_BUNDLE=
 export https_proxy=
+export http_proxy=
 export HTTP_PROXY=
 export HTTPS_PROXY=
-export NO_PROXY="registry-1.docker.io/v2,k8s.gcr.io,node.kubernetes.io,npmjs.org"
+#export NO_PROXY="registry-1.docker.io/v2,k8s.gcr.io,node.kubernetes.io,npmjs.org"
+
+#export ALL_PROXY=socks5://server.proxy.vzwcorp.com:9290
+export http_proxy=http://server.proxy.vzwcorp.com:9290
+export https_proxy=http://server.proxy.vzwcorp.com:9290
+export HTTP_PROXY=server.proxy.vzwcorp.com:9290
+export HTTPS_PROXY=server.proxy.vzwcorp.com:9290
+#export NO_PROXY="registry-1.docker.io/v2,k8s.gcr.io,node.kubernetes.io,npmjs.org,homebrew.bintray.com"
 
 # Let pyenv control over shell path
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+export PATH="/usr/local/opt/curl/bin:$PATH"

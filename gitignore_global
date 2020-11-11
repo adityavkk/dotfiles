@@ -53,3 +53,6 @@ cabal.sandbox.config
 # Coq
 *.vo
 *.glob
+
+# Scala/Java
+.metals

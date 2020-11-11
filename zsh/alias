@@ -15,6 +15,7 @@ alias src="source ~/.zshrc"
 alias dev="cd ~/dev"
 alias dotfiles="cd ~/dev/dotfiles"
 alias dir="tree -aI 'node_modules|cache|test_*|.git'"
+
 ########## Movement ######### 
 alias ..='cd ..'
 alias ...='cd ../../../'
@@ -34,7 +35,9 @@ alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
 
 #########  Network ######### 
+alias port='netstat -an | ag'
 alias ports='netstat -tulanp'
+
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"

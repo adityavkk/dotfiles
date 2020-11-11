@@ -238,12 +238,7 @@ endif
 call plug#end()
 "
 
-""----------------------------------------------------- BEGIN - NEOFORMAT  -----------------------------------------------------"
-" Runs NeoFormat on save!
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
+
 ""----------------------------------------------------- END - NEOFORMAT  -----------------------------------------------------"
 
 ""----------------------------------------------------- BEGIN - DENITE  -----------------------------------------------------"
@@ -663,6 +658,28 @@ endif
 "let g:diminactive_use_syntax = 1
 
 ""----------------------------------------------------- END --- DIMINACTIVE -----------------------------------------------------"
+"
+""----------------------------------------------------- BEGIN --- EASYMOTION -----------------------------------------------------"
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
+""----------------------------------------------------- END --- EASYMOTION -----------------------------------------------------"
 
 " ============================================================================ "
 " ===                                UI                                    === "
@@ -787,9 +804,7 @@ cmap w!! w !sudo tee %
 vnoremap <leader>p "_dP
 
 " === Search shorcuts === "
-"   <leader>h - Find and replace
 "   <leader>/ - Claer highlighted search terms while preserving history
-map <leader>h :%s///<left><left>
 nmap <silent> <leader>/ :nohlsearch<CR>
 
 " Reload icons after init source

@@ -6,11 +6,11 @@
 	aa = add -A
 	c = commit -m
 	b = branch
-	bb = branch -b
 
 	ra = remote add
 	po = push origin
 	co = checkout
+	cb = checkout -b
 	
 	pom = push origin master
 
@@ -35,7 +35,7 @@
 
 [color "branch"]
     current = yellow reverse
-    local = yello
+    local = yellow
     remote = green
 
 [color "diff"]
@@ -56,13 +56,16 @@
     log = true
     ff = false
 
+[http]
+	postBuffer = 15728640
+
 [http "https://github.com"]
-  proxy = # NEEDS CHANGING BASED ON PROXY
+  proxy = server.proxy.vzwcorp.com:9290 # NEEDS CHANGING BASED ON PROXY
 	sslVerify = false
 	insteadOf = gh:
 
 [http "https://gitlab.visible.com"]
-  proxy = # NEEDS CHANGING BASED ON PROXY
+  proxy = server.proxy.vzwcorp.com:9290 # NEEDS CHANGING BASED ON PROXY
 	sslVerify = false
 
 # Sets the osxkeychain as the cred manager
